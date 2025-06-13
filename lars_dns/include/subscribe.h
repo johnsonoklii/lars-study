@@ -23,26 +23,24 @@ public:
         return instance;
     }
 
+    // 这些函数都会当作任务发送到loop的线程，因此是线程安全的
     //订阅
-    void subscribe(int fd, uint64_t mod);
+    static void subscribe(int fd, uint64_t mod);
     
     //取消订阅
-    void unsubscribe(int fd, uint64_t mod);
+    static void unsubscribe(int fd, uint64_t mod);
 
     //发布
-    void publish(std::vector<uint64_t> &change_mods);
+    static void publish(event_loop* loop, std::vector<uint64_t> &change_mods);
 
     //根据在线用户fd得到需要发布的列表
-    void make_publish_map(listen_fd_set &online_fds, publish_map &need_publish);
+    static void make_publish_map(listen_fd_set &online_fds, publish_map &need_publish);
 private:
     subscribe_list() = default;
 
-    void push_change_task(event_loop *loop);
+    static void push_change_task(event_loop *loop);
 
 private:
-    std::mutex m_subscribe_map_mutex;
-    std::mutex m_publish_map_mutex;
-
-    subscribe_map m_subscribe_map;
-    publish_map m_publish_map;      //fd： 待发送的消息
+    static thread_local subscribe_map s_t_subscribe_map;
+    static thread_local publish_map s_t_publish_map;      //fd： 待发送的消息
 };

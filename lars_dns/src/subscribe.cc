@@ -3,49 +3,45 @@
 
 #include "lars.pb.h"
 
-extern tcp_server* server;
+thread_local subscribe_map subscribe_list::s_t_subscribe_map;
+thread_local publish_map subscribe_list::s_t_publish_map;      //fd： 待发送的消息
 
 // TODO: 1. subscribe_list改成thread_loacl，属于一个loop，防止加锁
 
 void subscribe_list::subscribe(int fd, uint64_t mod) {
-    std::lock_guard<std::mutex> lock(m_subscribe_map_mutex);
-    m_subscribe_map[mod].emplace(fd);
+    s_t_subscribe_map[mod].emplace(fd);
 }
 
 void subscribe_list::unsubscribe(int fd, uint64_t mod) {
-    std::lock_guard<std::mutex> lock(m_subscribe_map_mutex);
-    m_subscribe_map[mod].erase(fd);
-    if (m_subscribe_map[mod].empty()) {
-        m_subscribe_map.erase(mod);
+    s_t_subscribe_map[mod].erase(fd);
+    if (s_t_subscribe_map[mod].empty()) {
+        s_t_subscribe_map.erase(mod);
     }
 }
 
-void subscribe_list::publish(std::vector<uint64_t> &change_mods) {
-    {
-        std::lock_guard<std::mutex> lock1(m_subscribe_map_mutex);
-        std::lock_guard<std::mutex> lock2(m_publish_map_mutex);
+// 这是在每个loop的线程
+void subscribe_list::publish(event_loop* loop, std::vector<uint64_t> &change_mods) {
 
-        for (auto mod : change_mods) {
-            if (m_subscribe_map.find(mod) != m_subscribe_map.end()) {
-                auto fds = m_subscribe_map[mod];
-                // 为了减少发送频率，先将fd要发送的消息整合在一起
-                for (auto fd : fds) {
-                    m_publish_map[fd].emplace(mod);
-                }
+    for (auto mod : change_mods) {
+        if (s_t_subscribe_map.find(mod) != s_t_subscribe_map.end()) {
+            auto fds = s_t_subscribe_map[mod];
+            // 为了减少发送频率，先将fd要发送的消息整合在一起
+            for (auto fd : fds) {
+                s_t_publish_map[fd].emplace(mod);
             }
         }
     }
+    
+    push_change_task(loop);
 
-    server->send_task(std::bind(&subscribe_list::push_change_task, this, std::placeholders::_1));
+    // server->send_task(std::bind(&subscribe_list::push_change_task, this, std::placeholders::_1));
 }
 
 void subscribe_list::make_publish_map(listen_fd_set &online_fds, publish_map &need_publish) {
-    std::lock_guard<std::mutex> lock(m_publish_map_mutex);
-
     for (auto fd : online_fds) {
-        if (m_publish_map.find(fd) != m_publish_map.end()) {
-            need_publish.emplace(fd, m_publish_map[fd]);
-            m_publish_map.erase(fd);
+        if (s_t_publish_map.find(fd) != s_t_publish_map.end()) {
+            need_publish.emplace(fd, s_t_publish_map[fd]);
+            s_t_publish_map.erase(fd);
         }
     }
 }

@@ -8,6 +8,8 @@
 #include <time.h>
 #include <string.h>
 
+extern tcp_server* server;
+
 route::route() {
     m_data_pointer = std::make_shared<route_map>();
     m_tmp_pointer = std::make_shared<route_map>();
@@ -286,7 +288,10 @@ void route::check_route_changes() {
 
             //推送 
             // TODO: 这里考虑thread_local
-            subscribe_list::get_instance().publish(changes);
+            // subscribe_list::get_instance().publish(changes);
+
+            // 发送一个publish任务，
+            server->send_task(std::bind(&subscribe_list::publish, std::placeholders::_1, changes));
 
             //2.4 删除当前版本之前的修改记录
             route::get_instance().remove_changes();

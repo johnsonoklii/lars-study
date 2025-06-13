@@ -55,4 +55,4 @@ link_directories(
 
 add_subdirectory(lars_reactor)
 add_subdirectory(lars_dns)
-add_subdirectory(lars_reporter)
+# add_subdirectory(lars_reporter)

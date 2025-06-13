@@ -35,7 +35,7 @@ public:
     void on_build(const net_connection::sptr& conn) {
         printf("new conn: %d\n", conn->fd());
         uint64_t key = ((uint64_t)1 << 32) + 2; 
-        subscribe_list::get_instance().subscribe(conn->fd(), key);
+        subscribe_list::subscribe(conn->fd(), key);
         printf("subscribe modid = %d, cmdid = %d\n",1, 2);
     }
 
