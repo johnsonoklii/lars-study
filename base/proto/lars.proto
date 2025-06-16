@@ -38,7 +38,7 @@ message HostCallResult {
 }
 
 //上报 负载均衡 调度数据 给 lars_reporter 的消息内容
-message ReportStatusReq {
+message ReportStatusRequest {
     int32 modid = 1;
     int32 cmdid = 2;
     int32 caller = 3;

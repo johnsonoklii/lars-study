@@ -42,6 +42,7 @@ set(CMAKE_CXX_FLAGS_RELEASE
 include_directories(
   ${PROJECT_SOURCE_DIR}/lars_reactor/include
   ${PROJECT_SOURCE_DIR}/lars_dns/include
+  ${PROJECT_SOURCE_DIR}/lars_reporter/include
   /usr/local/include
   /usr/include
 )
@@ -55,4 +56,4 @@ link_directories(
 
 add_subdirectory(lars_reactor)
 add_subdirectory(lars_dns)
-# add_subdirectory(lars_reporter)
+add_subdirectory(lars_reporter)

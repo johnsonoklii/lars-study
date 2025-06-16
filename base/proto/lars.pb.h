@@ -68,16 +68,16 @@ extern HostCallResultDefaultTypeInternal _HostCallResult_default_instance_;
 class HostInfo;
 class HostInfoDefaultTypeInternal;
 extern HostInfoDefaultTypeInternal _HostInfo_default_instance_;
-class ReportStatusReq;
-class ReportStatusReqDefaultTypeInternal;
-extern ReportStatusReqDefaultTypeInternal _ReportStatusReq_default_instance_;
+class ReportStatusRequest;
+class ReportStatusRequestDefaultTypeInternal;
+extern ReportStatusRequestDefaultTypeInternal _ReportStatusRequest_default_instance_;
 }  // namespace lars
 PROTOBUF_NAMESPACE_OPEN
 template<> ::lars::GetRouteRequest* Arena::CreateMaybeMessage<::lars::GetRouteRequest>(Arena*);
 template<> ::lars::GetRouteResponse* Arena::CreateMaybeMessage<::lars::GetRouteResponse>(Arena*);
 template<> ::lars::HostCallResult* Arena::CreateMaybeMessage<::lars::HostCallResult>(Arena*);
 template<> ::lars::HostInfo* Arena::CreateMaybeMessage<::lars::HostInfo>(Arena*);
-template<> ::lars::ReportStatusReq* Arena::CreateMaybeMessage<::lars::ReportStatusReq>(Arena*);
+template<> ::lars::ReportStatusRequest* Arena::CreateMaybeMessage<::lars::ReportStatusRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace lars {
 
@@ -755,23 +755,23 @@ class HostCallResult PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
-class ReportStatusReq PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:lars.ReportStatusReq) */ {
+class ReportStatusRequest PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:lars.ReportStatusRequest) */ {
  public:
-  inline ReportStatusReq() : ReportStatusReq(nullptr) {}
-  virtual ~ReportStatusReq();
+  inline ReportStatusRequest() : ReportStatusRequest(nullptr) {}
+  virtual ~ReportStatusRequest();
 
-  ReportStatusReq(const ReportStatusReq& from);
-  ReportStatusReq(ReportStatusReq&& from) noexcept
-    : ReportStatusReq() {
+  ReportStatusRequest(const ReportStatusRequest& from);
+  ReportStatusRequest(ReportStatusRequest&& from) noexcept
+    : ReportStatusRequest() {
     *this = ::std::move(from);
   }
 
-  inline ReportStatusReq& operator=(const ReportStatusReq& from) {
+  inline ReportStatusRequest& operator=(const ReportStatusRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ReportStatusReq& operator=(ReportStatusReq&& from) noexcept {
+  inline ReportStatusRequest& operator=(ReportStatusRequest&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -789,20 +789,20 @@ class ReportStatusReq PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ReportStatusReq& default_instance();
+  static const ReportStatusRequest& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ReportStatusReq* internal_default_instance() {
-    return reinterpret_cast<const ReportStatusReq*>(
-               &_ReportStatusReq_default_instance_);
+  static inline const ReportStatusRequest* internal_default_instance() {
+    return reinterpret_cast<const ReportStatusRequest*>(
+               &_ReportStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  friend void swap(ReportStatusReq& a, ReportStatusReq& b) {
+  friend void swap(ReportStatusRequest& a, ReportStatusRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(ReportStatusReq* other) {
+  inline void Swap(ReportStatusRequest* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -810,7 +810,7 @@ class ReportStatusReq PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ReportStatusReq* other) {
+  void UnsafeArenaSwap(ReportStatusRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -818,17 +818,17 @@ class ReportStatusReq PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline ReportStatusReq* New() const final {
-    return CreateMaybeMessage<ReportStatusReq>(nullptr);
+  inline ReportStatusRequest* New() const final {
+    return CreateMaybeMessage<ReportStatusRequest>(nullptr);
   }
 
-  ReportStatusReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ReportStatusReq>(arena);
+  ReportStatusRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ReportStatusRequest>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ReportStatusReq& from);
-  void MergeFrom(const ReportStatusReq& from);
+  void CopyFrom(const ReportStatusRequest& from);
+  void MergeFrom(const ReportStatusRequest& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -842,13 +842,13 @@ class ReportStatusReq PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ReportStatusReq* other);
+  void InternalSwap(ReportStatusRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "lars.ReportStatusReq";
+    return "lars.ReportStatusRequest";
   }
   protected:
-  explicit ReportStatusReq(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit ReportStatusRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -928,7 +928,7 @@ class ReportStatusReq PROTOBUF_FINAL :
   void _internal_set_ts(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:lars.ReportStatusReq)
+  // @@protoc_insertion_point(class_scope:lars.ReportStatusRequest)
  private:
   class _Internal;
 
@@ -1227,125 +1227,125 @@ inline void HostCallResult::set_overload(bool value) {
 
 // -------------------------------------------------------------------
 
-// ReportStatusReq
+// ReportStatusRequest
 
 // int32 modid = 1;
-inline void ReportStatusReq::clear_modid() {
+inline void ReportStatusRequest::clear_modid() {
   modid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusReq::_internal_modid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusRequest::_internal_modid() const {
   return modid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusReq::modid() const {
-  // @@protoc_insertion_point(field_get:lars.ReportStatusReq.modid)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusRequest::modid() const {
+  // @@protoc_insertion_point(field_get:lars.ReportStatusRequest.modid)
   return _internal_modid();
 }
-inline void ReportStatusReq::_internal_set_modid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ReportStatusRequest::_internal_set_modid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   modid_ = value;
 }
-inline void ReportStatusReq::set_modid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ReportStatusRequest::set_modid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_modid(value);
-  // @@protoc_insertion_point(field_set:lars.ReportStatusReq.modid)
+  // @@protoc_insertion_point(field_set:lars.ReportStatusRequest.modid)
 }
 
 // int32 cmdid = 2;
-inline void ReportStatusReq::clear_cmdid() {
+inline void ReportStatusRequest::clear_cmdid() {
   cmdid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusReq::_internal_cmdid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusRequest::_internal_cmdid() const {
   return cmdid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusReq::cmdid() const {
-  // @@protoc_insertion_point(field_get:lars.ReportStatusReq.cmdid)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusRequest::cmdid() const {
+  // @@protoc_insertion_point(field_get:lars.ReportStatusRequest.cmdid)
   return _internal_cmdid();
 }
-inline void ReportStatusReq::_internal_set_cmdid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ReportStatusRequest::_internal_set_cmdid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   cmdid_ = value;
 }
-inline void ReportStatusReq::set_cmdid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ReportStatusRequest::set_cmdid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_cmdid(value);
-  // @@protoc_insertion_point(field_set:lars.ReportStatusReq.cmdid)
+  // @@protoc_insertion_point(field_set:lars.ReportStatusRequest.cmdid)
 }
 
 // int32 caller = 3;
-inline void ReportStatusReq::clear_caller() {
+inline void ReportStatusRequest::clear_caller() {
   caller_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusReq::_internal_caller() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusRequest::_internal_caller() const {
   return caller_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusReq::caller() const {
-  // @@protoc_insertion_point(field_get:lars.ReportStatusReq.caller)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ReportStatusRequest::caller() const {
+  // @@protoc_insertion_point(field_get:lars.ReportStatusRequest.caller)
   return _internal_caller();
 }
-inline void ReportStatusReq::_internal_set_caller(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ReportStatusRequest::_internal_set_caller(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   caller_ = value;
 }
-inline void ReportStatusReq::set_caller(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ReportStatusRequest::set_caller(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_caller(value);
-  // @@protoc_insertion_point(field_set:lars.ReportStatusReq.caller)
+  // @@protoc_insertion_point(field_set:lars.ReportStatusRequest.caller)
 }
 
 // repeated .lars.HostCallResult results = 4;
-inline int ReportStatusReq::_internal_results_size() const {
+inline int ReportStatusRequest::_internal_results_size() const {
   return results_.size();
 }
-inline int ReportStatusReq::results_size() const {
+inline int ReportStatusRequest::results_size() const {
   return _internal_results_size();
 }
-inline void ReportStatusReq::clear_results() {
+inline void ReportStatusRequest::clear_results() {
   results_.Clear();
 }
-inline ::lars::HostCallResult* ReportStatusReq::mutable_results(int index) {
-  // @@protoc_insertion_point(field_mutable:lars.ReportStatusReq.results)
+inline ::lars::HostCallResult* ReportStatusRequest::mutable_results(int index) {
+  // @@protoc_insertion_point(field_mutable:lars.ReportStatusRequest.results)
   return results_.Mutable(index);
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::lars::HostCallResult >*
-ReportStatusReq::mutable_results() {
-  // @@protoc_insertion_point(field_mutable_list:lars.ReportStatusReq.results)
+ReportStatusRequest::mutable_results() {
+  // @@protoc_insertion_point(field_mutable_list:lars.ReportStatusRequest.results)
   return &results_;
 }
-inline const ::lars::HostCallResult& ReportStatusReq::_internal_results(int index) const {
+inline const ::lars::HostCallResult& ReportStatusRequest::_internal_results(int index) const {
   return results_.Get(index);
 }
-inline const ::lars::HostCallResult& ReportStatusReq::results(int index) const {
-  // @@protoc_insertion_point(field_get:lars.ReportStatusReq.results)
+inline const ::lars::HostCallResult& ReportStatusRequest::results(int index) const {
+  // @@protoc_insertion_point(field_get:lars.ReportStatusRequest.results)
   return _internal_results(index);
 }
-inline ::lars::HostCallResult* ReportStatusReq::_internal_add_results() {
+inline ::lars::HostCallResult* ReportStatusRequest::_internal_add_results() {
   return results_.Add();
 }
-inline ::lars::HostCallResult* ReportStatusReq::add_results() {
-  // @@protoc_insertion_point(field_add:lars.ReportStatusReq.results)
+inline ::lars::HostCallResult* ReportStatusRequest::add_results() {
+  // @@protoc_insertion_point(field_add:lars.ReportStatusRequest.results)
   return _internal_add_results();
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::lars::HostCallResult >&
-ReportStatusReq::results() const {
-  // @@protoc_insertion_point(field_list:lars.ReportStatusReq.results)
+ReportStatusRequest::results() const {
+  // @@protoc_insertion_point(field_list:lars.ReportStatusRequest.results)
   return results_;
 }
 
 // uint32 ts = 5;
-inline void ReportStatusReq::clear_ts() {
+inline void ReportStatusRequest::clear_ts() {
   ts_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ReportStatusReq::_internal_ts() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ReportStatusRequest::_internal_ts() const {
   return ts_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ReportStatusReq::ts() const {
-  // @@protoc_insertion_point(field_get:lars.ReportStatusReq.ts)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ReportStatusRequest::ts() const {
+  // @@protoc_insertion_point(field_get:lars.ReportStatusRequest.ts)
   return _internal_ts();
 }
-inline void ReportStatusReq::_internal_set_ts(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ReportStatusRequest::_internal_set_ts(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   ts_ = value;
 }
-inline void ReportStatusReq::set_ts(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ReportStatusRequest::set_ts(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_ts(value);
-  // @@protoc_insertion_point(field_set:lars.ReportStatusReq.ts)
+  // @@protoc_insertion_point(field_set:lars.ReportStatusRequest.ts)
 }
 
 #ifdef __GNUC__

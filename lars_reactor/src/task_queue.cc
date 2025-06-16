@@ -41,6 +41,7 @@ void task_queue::add(const task_msg& task) {
         m_queue.push(task);
     }
 
+    // FIXME: 放一个任务就激活一次，是不是有点浪费。可以设置任务等级，紧急任务马上通知，一般任务等积攒一定数量再通知
     int ret = ::write(m_efd, &idle_num, sizeof(idle_num));
     if (ret < 0) {
         perror("m_efd write");
