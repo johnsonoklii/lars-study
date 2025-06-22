@@ -9,10 +9,10 @@
 #include <arpa/inet.h>
 #include <errno.h>
 
-int csocket::create_socket(sa_family_t family) {
-    int sockfd = ::socket(family, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, IPPROTO_TCP);
+int csocket::create_socket(sa_family_t family, int type, int protocol) {
+    int sockfd = ::socket(family, type, protocol);
     if (sockfd < 0) {
-        fprintf(stderr, "create_socket error\n");
+        fprintf(stderr, "create_socket error: %s\n", strerror(errno));
         exit(1);
     }
     return sockfd;

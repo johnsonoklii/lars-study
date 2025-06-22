@@ -20,8 +20,9 @@ public:
     void set_keepalive(bool on);
 
     int fd() const {  return m_fd; }
+    void set_fd(int fd) { m_fd = fd; }
 
-    static int create_socket(sa_family_t family);
+    static int create_socket(sa_family_t family, int type, int protocol);
 private:
     int m_fd;
 };

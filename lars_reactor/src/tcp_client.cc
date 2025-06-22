@@ -18,7 +18,7 @@
 
 tcp_client::tcp_client(event_loop* loop, const char* ip, int port)
 : m_loop(loop)
-, m_sock(csocket::create_socket(AF_INET)) {
+, m_sock(csocket::create_socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, IPPROTO_TCP)) {
     bzero(&m_svr_addr, sizeof(m_svr_addr));
     m_svr_addr.sin_family = AF_INET;
     m_svr_addr.sin_port = htons(port);

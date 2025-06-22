@@ -19,7 +19,7 @@ constexpr int MAX_CONNS = 1024;
 std::atomic<int> tcp_server::s_conn_nums{0};
 
 tcp_server::tcp_server(event_loop* loop, const char* ip, uint16_t port)
-: m_listen_sock(csocket::create_socket(AF_INET)) {
+: m_listen_sock(csocket::create_socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, IPPROTO_TCP)) {
 
     m_max_conn_nums = config_file::instance()->GetNumber("reactor", "maxConn", MAX_CONNS);
 
